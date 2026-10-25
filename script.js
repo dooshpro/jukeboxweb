@@ -6,10 +6,11 @@ const addBtn = document.getElementById('addBtn');
 const queueList = document.getElementById('queueList');
 const pauseBtn = document.getElementById('pauseBtn');
 const skipBtn = document.getElementById('skipBtn');
+const clearBtn = document.getElementById('clearBtn');
 
 addBtn.addEventListener('click', function () {
     let url = songInput.value.trim();
-    if (!url) return; 
+    if (!url) return;
 
     let name = url.split('/').pop().split('?')[0];
     if (!name || name.length > 25) name = "saloon track #" + (queue.length + 1);
@@ -29,9 +30,8 @@ function playNext() {
 
     curIndex++;
     if (curIndex >= queue.length) {
-        console.log("reached end of queue");
-        return;
-    } 
+        curIndex = 0;
+    }
 
     let song = queue[curIndex];
     player.src = song.url;
@@ -57,6 +57,14 @@ pauseBtn.addEventListener('click', function () {
 
 skipBtn.addEventListener('click', function () {
     playNext();
+});
+
+clearBtn.addEventListener('click', function () {
+    player.pause();
+    player.src = '';
+    queue = [];
+    curIndex = -1;
+    renderQueue();
 });
 
 function renderQueue() {
@@ -88,7 +96,7 @@ function addPreset(url, name) {
     if (curIndex === -1) {
         playNext();
     }
-} 
+}
 
 renderQueue(); // init empty state 
 
