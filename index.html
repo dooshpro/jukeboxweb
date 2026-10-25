@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>saloon junkie</title>
     <link rel="stylesheet" href="style.css" />.
 </head>
+
 <body>
     <div class="main-container">
         <h1>saloon jukebox</h1>
         <p>drop a link to queue up a track</p>
-        
-        <!--inputform-->
+
+        <!--inputform -->
         <div>
             <input type="text" id="songInput" placeholder="paste mp3 or audio url here...">
-            <button id="addBtn">add to queue</button>
+            <button id="addBtn">add</button>
         </div>
-        
+        <div style="margin-top: 10px;">
+            <button id="pauseBtn">play/pause</button>
+            <button id="skipBtn">skip</button>
+        </div>
+        <div style="margin-top: 10px; font-size: 12px;">
+            <span>quick add:</span>
+            <button onclick="addPreset('https://www.myinstants.com/media/sounds/1-108.mp3', 'song1')">song 1</button>
+            <button onclick="addPreset('https://www.myinstants.com/media/sounds/spiderman-meme-song.mp3', 'song2')">song
+                2</button>
+        </div>
+
         <h3>current queue:</h3>
         <div id="queueList">
             <!--items go here-->
         </div>
     </div>
     <script src="script.js"></script>
-</body> 
-
+</body>

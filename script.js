@@ -1,14 +1,16 @@
 let queue = [];
 let curIndex = -1;
-let player = new Audio(); 
+let player = new Audio();
 const songInput = document.getElementById('songInput');
 const addBtn = document.getElementById('addBtn');
 const queueList = document.getElementById('queueList');
+const pauseBtn = document.getElementById('pauseBtn');
+const skipBtn = document.getElementById('skipBtn');
 
 addBtn.addEventListener('click', function () {
     let url = songInput.value.trim();
     if (!url) return; 
-    
+
     let name = url.split('/').pop().split('?')[0];
     if (!name || name.length > 25) name = "saloon track #" + (queue.length + 1);
 
@@ -29,7 +31,7 @@ function playNext() {
     if (curIndex >= queue.length) {
         console.log("reached end of queue");
         return;
-    }
+    } 
 
     let song = queue[curIndex];
     player.src = song.url;
@@ -44,6 +46,18 @@ function playNext() {
 player.onended = function () {
     playNext();
 };
+
+pauseBtn.addEventListener('click', function () {
+    if (player.paused) {
+        player.play();
+    } else {
+        player.pause();
+    }
+});
+
+skipBtn.addEventListener('click', function () {
+    playNext();
+});
 
 function renderQueue() {
     queueList.innerHTML = '';
@@ -68,4 +82,16 @@ function renderQueue() {
     });
 }
 
-renderQueue(); // init empty state
+function addPreset(url, name) {
+    queue.push({ name: name, url: url });
+    renderQueue();
+    if (curIndex === -1) {
+        playNext();
+    }
+} 
+
+renderQueue(); // init empty state 
+
+
+
+
