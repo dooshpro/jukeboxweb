@@ -1,30 +1,69 @@
 body {
-            background: #2b1d0c;
-            color: #f4d06f;
-            font-family: monospace;
-            padding: 20px;
-        }
-        /* TODO: fix this ugly container margin later */
-        .main-container {
-            max-width: 600px;
-            margin: 40px auto;
-            border: 4px solid #b8860b;
-            padding: 20px;
-            background: #3c2810;
-        }
-        input, button {
-            background: #f4d06f;
-            border: none;
-            padding: 10px;
-            font-family: monospace;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-        input { width: 70%; }
-        button { cursor: pointer; }
-        .queue-item {
-            background: #231607;
-            padding: 8px;
-            margin-top: 6px;
-            border-left: 3px solid #b8860b;
-        }
+    background-color: #2b1d0c;
+    background-image: url('./media/bg.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #f4d06f;
+    font-family: monospace;
+    padding: 20px;
+}
+
+.main-container {
+    max-width: 640px;
+    margin: 40px auto;
+    border: 4px solid #d4af37;
+    padding: 25px;
+    background: rgba(45, 28, 10, 0.92);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85);
+}
+
+input,
+button {
+    background: #f4d06f;
+    color: #2b1d0c;
+    border: 2px solid #b8860b;
+    padding: 10px 12px;
+    font-family: monospace;
+    font-weight: bold;
+    margin-top: 6px;
+    transition: all 0.1s ease;
+}
+
+input {
+    width: 68%;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fff;
+    background: #fff8e7;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ffe082;
+    transform: translateY(-1px);
+}
+
+#clearBtn {
+    background: #cc3333;
+    color: #fff;
+    border-color: #990000;
+}
+
+#clearBtn:hover {
+    background: #e64d4d;
+}
+
+.queue-item {
+    background: rgba(23, 14, 7, 0.9);
+    padding: 10px;
+    margin-top: 8px;
+    border-left: 4px solid #d4af37;
+    font-size: 13px;
+}
