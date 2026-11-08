@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>saloon junkie</title>
     <link rel="icon" href="./media/favicon.ico">
-    <link rel="stylesheet" href="style.css" />.
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -22,7 +22,12 @@
         <div style="margin-top: 10px;">
             <button id="pauseBtn">play/pause</button>
             <button id="skipBtn">skip</button>
-            <button id="clearBtn" style="background:#cc3333; color:#fff;">clear queue</button>
+            <button id="clearBtn">clear queue</button>
+        </div>
+        <div class="volume-row">
+            <label for="volumeSlider">volume</label>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.7">
+            <span id="volumeValue">70%</span>
         </div>
         <div style="margin-top: 10px; font-size: 12px;">
             <span>quick add:</span>

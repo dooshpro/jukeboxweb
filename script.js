@@ -7,6 +7,22 @@ const queueList = document.getElementById('queueList');
 const pauseBtn = document.getElementById('pauseBtn');
 const skipBtn = document.getElementById('skipBtn');
 const clearBtn = document.getElementById('clearBtn');
+const volumeSlider = document.getElementById('volumeSlider');
+const volumeValue = document.getElementById('volumeValue');
+
+function setVolume(value) {
+    let v = Math.min(1, Math.max(0, parseFloat(value)));
+    player.volume = v;
+    let pct = Math.round(v * 100);
+    volumeValue.textContent = pct + '%';
+    volumeSlider.style.setProperty('--fill', pct + '%');
+}
+
+volumeSlider.addEventListener('input', function () {
+    setVolume(volumeSlider.value);
+});
+
+setVolume(volumeSlider.value); // start on what the slider shows
 
 addBtn.addEventListener('click', function () {
     let url = songInput.value.trim();
@@ -71,7 +87,7 @@ function renderQueue() {
     queueList.innerHTML = '';
 
     if (queue.length === 0) {
-        queueList.innerHTML = '<p style="color:#777">no tracks queued up yet...</p>';
+        queueList.innerHTML = '<p class="empty-queue">no tracks queued up yet...</p>';
         return;
     }
 
@@ -80,7 +96,7 @@ function renderQueue() {
         div.className = 'queue-item';
 
         if (idx === curIndex) {
-            div.style.borderColor = '#00ff66';
+            div.classList.add('playing');
             div.innerHTML = `<strong>▶ ${item.name}</strong> (playing)`;
         } else {
             div.innerText = `${idx + 1}. ${item.name}`;
